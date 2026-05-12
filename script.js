@@ -1,13 +1,22 @@
-window.addEventListener("scroll", () => {
-  const images = document.querySelectorAll(".grid img");
+/* ANIMACIONES AL SCROLL */
+const items = document.querySelectorAll(".card, .step, .grid img");
 
-  images.forEach(img => {
-    const top = img.getBoundingClientRect().top;
-    const height = window.innerHeight;
-
-    if (top < height - 100) {
-      img.style.opacity = "1";
-      img.style.transform = "scale(1)";
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
     }
   });
+}, { threshold: 0.2 });
+
+items.forEach(el => observer.observe(el));
+
+/* PARALLAX HERO */
+const parallax = document.querySelector(".parallax-layer");
+
+window.addEventListener("scroll", () => {
+  const scroll = window.scrollY;
+
+  // efecto suave premium
+  parallax.style.transform = `translateY(${scroll * 0.2}px)`;
 });
