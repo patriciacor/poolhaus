@@ -1,19 +1,59 @@
- const items = document.querySelectorAll(".reveal");
+document.addEventListener("DOMContentLoaded", () => {
 
-  const obs = new IntersectionObserver(e=>{
-    e.forEach(i=>{
-      if(i.isIntersecting) i.target.classList.add("show");
+  // ================= REVEAL ANIMATION =================
+  const items = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  items.forEach(item => observer.observe(item));
+
+  // ================= WHATSAPP =================
+  const buttons = document.querySelectorAll(".wa");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+      const model = btn.closest(".card")?.querySelector("h3")?.innerText || "Piscina";
+
+      const msg = encodeURIComponent(
+        "Hola, quiero cotizar el modelo " + model + " de Poolhaus"
+      );
+
+      window.open("https://wa.me/5989213852?text=" + msg, "_blank");
+
     });
   });
 
-  items.forEach(i=>obs.observe(i));
+  // ================= FORM =================
+  const form = document.querySelector("form");
 
-  document.querySelector("form").addEventListener("submit", e=>{
-    e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    const msg = encodeURIComponent("Nuevo contacto Poolhaus");
-    window.open(`https://wa.me/59892138522?text=${msg}`);
-  });
+      const nombre = document.getElementById("nombre")?.value || "";
+      const telefono = document.getElementById("telefono")?.value || "";
+      const depto = document.getElementById("depto")?.value || "";
+      const mensaje = document.getElementById("mensaje")?.value || "";
+
+      const text = encodeURIComponent(
+        "Nuevo contacto Poolhaus:\n" +
+        "Nombre: " + nombre + "\n" +
+        "Tel: " + telefono + "\n" +
+        "Depto: " + depto + "\n" +
+        "Mensaje: " + mensaje
+      );
+
+      window.open("https://wa.me/5989213852?text=" + text, "_blank");
+    });
+  }
 
 });
-  }
