@@ -79,4 +79,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 400) {
-      scrollTopBtn.
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollTopBtn?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+
+  // =========================
+  // HERO PARALLAX (EFECTO LUJO)
+  // =========================
+  const heroBg = document.querySelector(".hero-bg");
+
+  window.addEventListener("scroll", () => {
+    if (!heroBg) return;
+
+    const value = window.scrollY;
+
+    heroBg.style.transform =
+      `scale(1.1) translateY(${value * 0.2}px)`;
+  });
+
+});
