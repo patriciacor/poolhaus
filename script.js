@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================
-  // WHATSAPP BOTONES DE CARDS
+  // WHATSAPP BOTONES CARDS
   // =========================
   const waButtons = document.querySelectorAll(".wa");
 
@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollTopBtn = document.getElementById("scrollTop");
 
   window.addEventListener("scroll", () => {
+    if (!scrollTopBtn) return;
+
     if (window.scrollY > 400) {
       scrollTopBtn.classList.add("show");
     } else {
@@ -85,16 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  scrollTopBtn?.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     });
-  });
+  }
 
 
   // =========================
-  // HERO PARALLAX (EFECTO LUJO)
+  // HERO PARALLAX
   // =========================
   const heroBg = document.querySelector(".hero-bg");
 
