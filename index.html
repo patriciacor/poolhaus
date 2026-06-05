@@ -1,130 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Poolhaus | Piscinas Premium</title>
-  <link rel="stylesheet" href="style.css"/>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Poolhaus | Piscinas Premium Cinematic</title>
+
+  <meta name="description" content="Piscinas premium en Uruguay. Diseño, instalación en 5 días y garantía de 15 años. Más de 200 proyectos realizados.">
+
+  <meta property="og:title" content="Poolhaus | Piscinas Premium Cinematic">
+  <meta property="og:description" content="Diseño premium, instalación rápida, calidad garantizada.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- ================= HERO ================= -->
-<header class="hero" id="inicio">
-  <div class="hero-content">
-    <h1>POOLHAUS</h1>
-    <p>Piscinas premium diseño negro & violeta</p>
+<!-- ================= HERO CINEMATIC ================= -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
 
-    <a href="#catalogo" class="btn-primary">Ver modelos</a>
+  <div class="hero-content reveal">
+    <h1>POOLHAUS</h1>
+    <p>Diseño. Precisión. Experiencia premium en piscinas.</p>
+
+    <div class="hero-buttons">
+      <a href="#story" class="btn primary">Explorar</a>
+      <a href="#contacto" class="btn secondary">Cotizar</a>
+    </div>
   </div>
 </header>
 
-<!-- ================= NAV ================= -->
-<nav class="nav">
-  <a href="#inicio">Inicio</a>
-  <a href="#catalogo">Modelos</a>
-  <a href="#galeria">Galería</a>
-  <a href="#faq">FAQ</a>
-  <a href="#testimonios">Opiniones</a>
-</nav>
+<!-- ================= STORY / TESLA FLOW ================= -->
+<section id="story" class="story">
 
-<!-- ================= CATALOGO ================= -->
-<section id="catalogo" class="section">
-  <h2>Catálogo de Modelos</h2>
-
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">Todos</button>
-    <button class="filter-btn" data-filter="premium">Premium</button>
-    <button class="filter-btn" data-filter="compacto">Compacto</button>
+  <div class="story-block reveal">
+    <h2>Más de 200 piscinas instaladas</h2>
+    <p>Experiencia real en todo Uruguay.</p>
   </div>
 
-  <div class="catalog">
+  <div class="story-block reveal">
+    <h2>Instalación en 5 días</h2>
+    <p>Optimización total del proceso constructivo.</p>
+  </div>
 
-    <div class="model-card" data-type="premium">
-      <h3>La Serena</h3>
-      <p>Piscina grande diseño lujo</p>
+  <div class="story-block reveal">
+    <h2>Garantía de 15 años</h2>
+    <p>Cascos PRFV de máxima durabilidad.</p>
+  </div>
+
+</section>
+
+<!-- ================= MODELOS ================= -->
+<section class="models">
+
+  <h2 class="reveal">Modelos Poolhaus</h2>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
+      <h3>Premium Total</h3>
+      <p>Clorador de sal · Bomba de calor · Manta térmica · Enrollador · Pasamanos</p>
+      <button class="wa">Cotizar Premium</button>
     </div>
 
-    <div class="model-card" data-type="premium">
-      <h3>Cavancha</h3>
-      <p>Modelo familiar premium</p>
+    <div class="card reveal">
+      <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e">
+      <h3>Premium Plus</h3>
+      <p>Sistema completo + instalación llave en mano</p>
+      <button class="wa">Cotizar Plus</button>
     </div>
 
-    <div class="model-card" data-type="compacto">
-      <h3>Bahía Inglesa</h3>
-      <p>Espacios pequeños modernos</p>
+    <div class="card reveal">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+      <h3>Compacto</h3>
+      <p>Diseño eficiente para espacios reducidos</p>
+      <button class="wa">Cotizar Compacto</button>
     </div>
 
-    <div class="model-card" data-type="compacto">
-      <h3>Solanas</h3>
-      <p>Modelo 7x3 elegante</p>
-    </div>
+  </div>
 
+</section>
+
+<!-- ================= PARALLAX CTA ================= -->
+<section class="parallax">
+  <div class="parallax-content reveal">
+    <h2>Diseño que transforma espacios</h2>
+    <p>Una piscina no es un producto. Es una experiencia.</p>
+
+    <a class="btn primary"
+       href="https://wa.me/5989213852?text=Hola%20quiero%20cotizar%20Poolhaus">
+       Contactar ahora
+    </a>
   </div>
 </section>
 
-<!-- ================= GALERIA ================= -->
-<section id="galeria" class="section dark">
-  <h2>Galería</h2>
+<!-- ================= CONTACTO ================= -->
+<section id="contacto" class="contact reveal">
+  <h2>Hablemos de tu proyecto</h2>
+  <p>Respuesta inmediata por WhatsApp</p>
 
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21" />
-    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6" />
-    <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e" />
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" />
-  </div>
+  <a class="btn primary"
+     href="https://wa.me/5989213852?text=Hola%20quiero%20una%20piscina%20Poolhaus">
+     Iniciar conversación
+  </a>
 </section>
 
-<!-- ================= FAQ ================= -->
-<section id="faq" class="section">
-  <h2>Preguntas Frecuentes</h2>
-
-  <div class="faq">
-
-    <div class="faq-item">
-      <div class="faq-question">¿Cuánto tarda la instalación?</div>
-      <div class="faq-answer">Entre 7 y 20 días según el modelo.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">¿Incluye pozo?</div>
-      <div class="faq-answer">Sí, incluye excavación básica.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">¿Se puede personalizar?</div>
-      <div class="faq-answer">Sí, colores, tamaño y terminaciones.</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= TESTIMONIOS ================= -->
-<section id="testimonios" class="section dark">
-  <h2>Testimonios</h2>
-
-  <div class="testimonials">
-
-    <div class="testimonial">
-      "Excelente calidad y diseño increíble."
-    </div>
-
-    <div class="testimonial">
-      "La instalación fue rápida y prolija."
-    </div>
-
-    <div class="testimonial">
-      "El mejor servicio en piscinas premium."
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <p>Poolhaus © 2026 - Piscinas Premium</p>
-  <p>WhatsApp: 09213852</p>
+<footer>
+  <p>Poolhaus © 2026 · Piscinas premium Uruguay</p>
 </footer>
 
-<script src="./app.js"></script>           </body>
+<script src="script.js"></script>
+</body>
 </html>
