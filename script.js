@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ================= REVEAL ANIMATION =================
+  // =========================
+  // REVEAL ANIMATION
+  // =========================
   const items = document.querySelectorAll(".reveal");
 
   const observer = new IntersectionObserver((entries) => {
@@ -15,24 +17,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   items.forEach(item => observer.observe(item));
 
-  // ================= WHATSAPP =================
-  const buttons = document.querySelectorAll(".wa");
 
-  buttons.forEach(btn => {
+  // =========================
+  // WHATSAPP BOTONES DE CARDS
+  // =========================
+  const waButtons = document.querySelectorAll(".wa");
+
+  waButtons.forEach(btn => {
     btn.addEventListener("click", () => {
 
-      const model = btn.closest(".card")?.querySelector("h3")?.innerText || "Piscina";
+      const card = btn.closest(".card");
+      const model = card?.querySelector("h3")?.innerText || "Piscina Poolhaus";
 
-      const msg = encodeURIComponent(
+      const message = encodeURIComponent(
         "Hola, quiero cotizar el modelo " + model + " de Poolhaus"
       );
 
-      window.open("https://wa.me/5989213852?text=" + msg, "_blank");
+      window.open(
+        "https://wa.me/59892138522?text=" + message,
+        "_blank"
+      );
 
     });
   });
 
-  // ================= FORM =================
+
+  // =========================
+  // FORMULARIO WHATSAPP
+  // =========================
   const form = document.querySelector("form");
 
   if (form) {
@@ -45,15 +57,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const mensaje = document.getElementById("mensaje")?.value || "";
 
       const text = encodeURIComponent(
-        "Nuevo contacto Poolhaus:\n" +
+        "🚨 Nuevo contacto Poolhaus\n\n" +
         "Nombre: " + nombre + "\n" +
-        "Tel: " + telefono + "\n" +
-        "Depto: " + depto + "\n" +
+        "Teléfono: " + telefono + "\n" +
+        "Departamento: " + depto + "\n" +
         "Mensaje: " + mensaje
       );
 
-      window.open("https://wa.me/59892138522?text=" + text, "_blank");
+      window.open(
+        "https://wa.me/59892138522?text=" + text,
+        "_blank"
+      );
     });
   }
 
-});
+
+  // =========================
+  // BOTÓN SUBIR ARRIBA
+  // =========================
+  const scrollTopBtn = document.getElementById("scrollTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.
