@@ -1,170 +1,63 @@
-// =============================
-// POOLHAUS - APP JS
-// Estilo: Negro / Violeta
-// =============================
-
 document.addEventListener("DOMContentLoaded", () => {
-  initNavigation();
-  initWhatsAppButton();
-  initHeroEffects();
-  initCatalogFilter();
-  initGallery();
-  initFAQ();
-  initTestimonials();
+
+  setupWhatsApp();
+  setupReveal();
+  parallaxHero();
+
 });
 
-// =============================
-// NAVIGATION SMOOTH SCROLL
-// =============================
-function initNavigation() {
-  const links = document.querySelectorAll("a[href^='#']");
+// ================= WHATSAPP =================
+function setupWhatsApp() {
 
-  links.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const targetId = link.getAttribute("href");
-      const target = document.querySelector(targetId);
-
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    });
-  });
-}
-
-// =============================
-// WHATSAPP FLOAT BUTTON
-// =============================
-function initWhatsAppButton() {
-  const phone = "5989213852"; // Uruguay format (+598 + número)
-  const message = encodeURIComponent(
-    "Hola, quiero información sobre Poolhaus 🏊‍♂️"
-  );
-
-  const btn = document.createElement("a");
-  btn.href = `https://wa.me/${phone}?text=${message}`;
-  btn.target = "_blank";
-  btn.className = "whatsapp-float";
-  btn.innerHTML = "💬 WhatsApp";
-
-  document.body.appendChild(btn);
-}
-
-// =============================
-// HERO EFFECTS (premium glow)
-// =============================
-function initHeroEffects() {
-  const hero = document.querySelector(".hero");
-
-  if (!hero) return;
-
-  hero.addEventListener("mousemove", e => {
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-
-    hero.style.background = `
-      radial-gradient(circle at ${x}% ${y}%,
-      rgba(170, 0, 255, 0.25),
-      rgba(0, 0, 0, 0.95))
-    `;
-  });
-
-  hero.addEventListener("mouseleave", () => {
-    hero.style.background = "";
-  });
-}
-
-// =============================
-// CATALOG FILTER (MODELOS)
-// =============================
-function initCatalogFilter() {
-  const buttons = document.querySelectorAll(".filter-btn");
-  const items = document.querySelectorAll(".model-card");
+  const buttons = document.querySelectorAll(".wa");
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const filter = btn.dataset.filter;
 
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+      const model = btn.closest(".card").querySelector("h3").innerText;
 
-      items.forEach(item => {
-        const type = item.dataset.type;
+      const msg = encodeURIComponent(
+        `Hola, quiero cotizar el modelo ${model} de Poolhaus`
+      );
 
-        if (filter === "all" || filter === type) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    });
-  });
-}
-
-// =============================
-// GALLERY LIGHTBOX SIMPLE
-// =============================
-function initGallery() {
-  const images = document.querySelectorAll(".gallery img");
-
-  const overlay = document.createElement("div");
-  overlay.className = "lightbox";
-  overlay.style.display = "none";
-  overlay.innerHTML = `<img src="" alt="preview">`;
-
-  document.body.appendChild(overlay);
-
-  const imgTag = overlay.querySelector("img");
-
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      imgTag.src = img.src;
-      overlay.style.display = "flex";
+      window.open(`https://wa.me/5989213852?text=${msg}`, "_blank");
     });
   });
 
-  overlay.addEventListener("click", () => {
-    overlay.style.display = "none";
-  });
 }
 
-// =============================
-// FAQ ACCORDION
-// =============================
-function initFAQ() {
-  const questions = document.querySelectorAll(".faq-item");
+// ================= APPLE / TESLA REVEAL =================
+function setupReveal() {
 
-  questions.forEach(item => {
-    const question = item.querySelector(".faq-question");
+  const elements = document.querySelectorAll(".reveal, .story-block");
 
-    question.addEventListener("click", () => {
-      item.classList.toggle("open");
+  const observer = new IntersectionObserver(entries => {
 
-      questions.forEach(other => {
-        if (other !== item) other.classList.remove("open");
-      });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
     });
-  });
+
+  }, { threshold: 0.15 });
+
+  elements.forEach(el => observer.observe(el));
+
 }
 
-// =============================
-// TESTIMONIAL SLIDER SIMPLE
-// =============================
-function initTestimonials() {
-  const slides = document.querySelectorAll(".testimonial");
-  let index = 0;
+// ================= HERO PARALLAX =================
+function parallaxHero() {
 
-  if (slides.length === 0) return;
+  const bg = document.querySelector(".hero-bg");
 
-  setInterval(() => {
-    slides.forEach(s => (s.style.display = "none"));
+  window.addEventListener("scroll", () => {
 
-    slides[index].style.display = "block";
-    index++;
+    let value = window.scrollY;
 
-    if (index >= slides.length) index = 0;
-  }, 4000);
+    if (bg) {
+      bg.style.transform = `scale(1.1) translateY(${value * 0.2}px)`;
+    }
+
+  });
+
 }
