@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Mensaje: " + mensaje
       );
 
-      window.open("https://wa.me/5989213852?text=" + text, "_blank");
+      window.open("https://wa.me/59892138522?text=" + text, "_blank");
     });
   }
 
