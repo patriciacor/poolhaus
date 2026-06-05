@@ -1,63 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
+ const items = document.querySelectorAll(".reveal");
 
-  setupWhatsApp();
-  setupReveal();
-  parallaxHero();
+  const obs = new IntersectionObserver(e=>{
+    e.forEach(i=>{
+      if(i.isIntersecting) i.target.classList.add("show");
+    });
+  });
+
+  items.forEach(i=>obs.observe(i));
+
+  document.querySelector("form").addEventListener("submit", e=>{
+    e.preventDefault();
+
+    const msg = encodeURIComponent("Nuevo contacto Poolhaus");
+    window.open(`https://wa.me/59892138522?text=${msg}`);
+  });
 
 });
-
-// ================= WHATSAPP =================
-function setupWhatsApp() {
-
-  const buttons = document.querySelectorAll(".wa");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-
-      const model = btn.closest(".card").querySelector("h3").innerText;
-
-      const msg = encodeURIComponent(
-        `Hola, quiero cotizar el modelo ${model} de Poolhaus`
-      );
-
-      window.open(`https://wa.me/5989213852?text=${msg}`, "_blank");
-    });
-  });
-
-}
-
-// ================= APPLE / TESLA REVEAL =================
-function setupReveal() {
-
-  const elements = document.querySelectorAll(".reveal, .story-block");
-
-  const observer = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-
-  }, { threshold: 0.15 });
-
-  elements.forEach(el => observer.observe(el));
-
-}
-
-// ================= HERO PARALLAX =================
-function parallaxHero() {
-
-  const bg = document.querySelector(".hero-bg");
-
-  window.addEventListener("scroll", () => {
-
-    let value = window.scrollY;
-
-    if (bg) {
-      bg.style.transform = `scale(1.1) translateY(${value * 0.2}px)`;
-    }
-
-  });
-
-}
